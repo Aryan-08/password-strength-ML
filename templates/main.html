@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password Strength Analysis</title>
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+        body{
+            background-image: url('../static/img/bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h1 class="text-center" style="padding:15px;margin-top:50px;font-weight: bold;">CHECK YOUR PASSWORD STRENGTH</h1>
+    
+        <div class="col-md-8" style="text-align:center;margin: 0 auto;">
+            <form method="POST">
+                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" value="{{ request.form.password }}"
+                    required><br>
+                <input type="checkbox" onclick="myFunction()"> Show Password
+                <div class="button-group">
+                    <button type="submit" name="submit" class="btn btn-primary">Check</button>
+                </div>
+            </form>
+        </div>
+    
+
+
+    
+        <div class="col-md-8" style="margin: 0 auto; margin-top:25px;">
+            <table class="table" bordercolor="black">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ALGORITHM</th>
+                        <th scope="col">STRENGTH</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    {% if (DecisionTree == 0) %}
+                        <tr style="background-color: #ec4848;">
+                            <td>Decision Tree</td>
+                            <td>Weak</td>
+                        </tr>
+                    {% endif %}
+                    {% if (DecisionTree == 1) %}
+                        <tr style="background-color: #01a0fc;">
+                            <td>Decision Tree</td>
+                            <td>Medium</td>
+                        </tr>
+                    {% endif %}
+                    {% if (DecisionTree == 2) %}
+                        <tr style="background-color: #53d653;">
+                            <td>Decision Tree</td>
+                            <td>Strong</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if (LogReg == 0) %}
+                        <tr style="background-color: #ec4848;">
+                            <td>Logistic Regression</td>
+                            <td>Weak</td>
+                        </tr>
+                    {% endif %}
+                    {% if (LogReg == 1) %}
+                        <tr style="background-color: #01a0fc;">
+                            <td>Logistic Regression</td>
+                            <td>Medium</td>
+                        </tr>
+                    {% endif %}
+                    {% if (LogReg == 2) %}
+                        <tr style="background-color: #53d653;">
+                            <td>Logistic Regression</td>
+                            <td>Strong</td>
+                        </tr>
+                    {% endif %}
+
+                   {% if (NaiveBayes == 0) %}
+                        <tr style="background-color: #ec4848;">
+                            <td>Naive Bayes</td>
+                            <td>Weak</td>
+                        </tr>
+                    {% endif %}
+                    {% if (NaiveBayes == 1) %}
+                        <tr style="background-color: #01a0fc;">
+                            <td>Naive Bayes</td>
+                            <td>Medium</td>
+                        </tr>
+                    {% endif %}
+                    {% if (NaiveBayes == 2) %}
+                        <tr style="background-color: #53d653;">
+                            <td>Naive Bayes</td>
+                            <td>Strong</td>
+                        </tr>
+                    {% endif %}
+                    {% if (RandomForest == 0) %}
+                        <tr style="background-color: #ec4848;">
+                            <td>Random Forest</td>
+                            <td>Weak</td>
+                        </tr>
+                    {% endif %}
+                    {% if (RandomForest == 1) %}
+                        <tr style="background-color: #01a0fc;">
+                            <td>Random Forest</td>
+                            <td>Medium</td>
+                        </tr>
+                    {% endif %}
+                    {% if (RandomForest == 2) %}
+                        <tr style="background-color: #53d653;">
+                            <td>Random Forest</td>
+                            <td>Strong</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if (NeuralNetwork == 0) %}
+                        <tr style="background-color: #ec4848;">
+                            <td>Neural Network</td>
+                            <td>Weak</td>
+                        </tr>
+                    {% endif %}
+                    {% if (NeuralNetwork == 1) %}
+                        <tr style="background-color:   #01a0fc;">
+                            <td>Neural Network</td>
+                            <td>Medium</td>
+                        </tr>
+                    {% endif %}
+                    {% if (NeuralNetwork == 2) %}
+                        <tr style="background-color: #53d653;">
+                            <td>Neural Network</td>
+                            <td>Strong</td>
+                        </tr>
+                    {% endif %}
+                   
+
+                </tbody>
+
+
+            </table>
+        </div>
+    
+        <script>
+            function myFunction(){
+                x = document.getElementById('password');
+                if(x.type ==="password"){
+                    x.type = "text";
+                }else{
+                    x.type = "password";
+                }
+            }
+
+        </script>
+</body>
+
+</html>
